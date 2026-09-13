@@ -43,6 +43,13 @@
   </symbol>
 </svg>
 
+<nav class="protobar" aria-label="Prototype">
+  <div class="wrap">
+    <span class="protobar-label"><svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg> Concept prototype — Stacey Rice</span>
+    <ul><li><a href="index.html">Homepage</a></li><li><a href="capability.html" aria-current="page">Capability page</a></li><li><a href="strategy.html">Strategy narrative</a></li></ul>
+  </div>
+</nav>
+
 <a class="skip" href="#main">Skip to main content</a>
 
 <header class="masthead">
@@ -159,9 +166,9 @@
       <div class="overview-grid">
         <div class="prose">
       <h2>The signal is the weakest link.</h2>
-      <p>Almost everything that moves now assumes a satellite is telling it where it is. That assumption fails in more places than most systems account for: under water, under a jungle canopy, inside a contested airspace, beneath the surface of another planet. It also fails on purpose, because a signal that can be received can be jammed or imitated.</p>
-      <p>Draper has worked on this problem since the beginning. The organization's founding work was inertial guidance — determining position from a system's own motion rather than from an outside reference — and that lineage runs directly into the sensors, filters, and flight software we build today.</p>
-      <p>What has changed is the range of environments. The same underlying question now has to be answered for a submarine, a satellite, a lunar lander, and a hand-carried device, each with different constraints on power, size, and how much error is survivable.</p>
+      <p>Almost everything that moves now assumes a satellite is telling it where it is. That assumption breaks in more places than most systems account for — under water, under a jungle canopy, in contested airspace, on the surface of another planet. It also breaks on purpose. A signal you can receive is a signal someone can jam or imitate.</p>
+      <p>We've worked on this since the beginning. Draper's founding work was inertial guidance — working out position from a system's own motion instead of an outside reference — and that line runs straight into the sensors, filters and flight software we build now.</p>
+      <p>What's changed is the range. The same question now has to be answered for a submarine, a satellite, a lunar lander and something you carry, each with its own limits on power, size and how much error it can survive.</p>
         </div>
 
         <figure class="frame frame-side" style="margin:0"><svg class="ghost" aria-hidden="true" focusable="false"><use href="#caret"/></svg><img src="img/cap-navigation-hero.jpg" alt="An operator at a control station monitoring a tracking display" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg>Operator at a tracking console</figcaption></figure>
@@ -180,7 +187,7 @@
             <svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg>
             We build the sensor, not just the system
           </h3>
-          <p>Navigation accuracy is bounded by the physics of the measuring device. Developing inertial sensors in-house — rather than integrating someone else's — means the performance ceiling is ours to move.</p>
+          <p>Accuracy is bounded by the physics of the measuring device. We develop inertial sensors in-house rather than integrating someone else's, so the ceiling is ours to move.</p>
         </div>
 
         <div class="approach-item">
@@ -188,7 +195,7 @@
             <svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg>
             Every input is imperfect, so fuse them
           </h3>
-          <p>No single reference is trustworthy alone. Estimation and sensor fusion combine inertial data with terrain, celestial, magnetic, and signal-of-opportunity references, weighting each by how much it can be believed at that moment.</p>
+          <p>No single reference can be trusted on its own. Estimation and sensor fusion combine inertial data with terrain, celestial, magnetic and signal-of-opportunity references, weighting each by how much it deserves to be believed at that moment.</p>
         </div>
 
         <div class="approach-item">
@@ -196,7 +203,7 @@
             <svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg>
             It has to survive the environment it's for
           </h3>
-          <p>An algorithm that works in simulation is not a navigation system. Packaging, thermal behavior, radiation tolerance, and qualification testing decide whether the work reaches the field.</p>
+          <p>An algorithm that works in simulation isn't a navigation system. Packaging, thermal behavior, radiation tolerance and qualification testing decide whether any of it reaches the field.</p>
         </div>
 
       </div>
@@ -346,7 +353,7 @@
       <div class="cta">
         <div>
           <h2>Bring us the version of this that doesn't work yet.</h2>
-          <p>Draper takes on problems at the point where the existing approach runs out, whether that's a research question or a system that has to be qualified and delivered.</p>
+          <p>We pick things up where the existing approach runs out — a research question, or a system that has to be qualified and delivered.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-ghost" href="index.html#partner">Start a project</a>

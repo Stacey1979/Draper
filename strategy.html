@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redesign strategy — Draper.com concept</title>
+<meta name="description" content="The platform finding, audience model, information architecture, accessibility testing and phasing behind the Draper.com redesign concept.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="draper.css">
+</head>
+<body class="page-strategy">
+
+<!-- Brand marks defined once, referenced everywhere -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="caret" viewBox="619.756 13.406 216.543 203.909"><path fill="currentColor" d="M697.844 13.4062L619.756 217.315H668.35L728.027 57.0584L787.705 217.315H836.299L758.211 13.4062H697.844Z"/></symbol>
+  <symbol id="draper" viewBox="0 0 1800 219">
+    <path fill="currentColor" d="M105.265 13.4062H0V217.315H105.265C166.007 217.315 180.504 187.514 180.504 148.311V82.4413C180.504 43.2389 166.007 13.4376 105.265 13.4376V13.4062ZM132.693 148.687C132.693 167.521 124.459 176.138 102.541 176.138H48.5936V54.5828H102.541C124.49 54.5828 132.693 63.2005 132.693 82.0339V148.687Z"/>
+    <path fill="currentColor" d="M493.983 100.084V70.6586C493.983 34.5899 476.355 13.4062 422.689 13.4062H313.51V217.315H362.104V157.712H418.776L458.728 217.315H513.959L466.931 147.904C487.69 136.529 493.952 123.21 493.952 100.053L493.983 100.084ZM446.579 97.3263C446.579 111.835 439.91 118.886 421.5 118.886H362.073V53.016H423.065C439.91 53.016 446.579 58.4999 446.579 73.0089V97.3263Z"/>
+    <path fill="var(--logo-caret,#FF4611)" d="M697.844 13.4062L619.756 217.315H668.35L728.027 57.0584L787.705 217.315H836.299L758.211 13.4062H697.844Z"/>
+    <path fill="currentColor" d="M1052.59 13.4062H946.169V217.315H994.763V159.687H1050.28C1103.94 159.687 1123.95 138.91 1123.95 102.058V70.69C1123.95 34.6213 1106.7 13.4376 1052.66 13.4376L1052.59 13.4062ZM1075.7 99.6765C1075.7 113.809 1069.03 120.453 1050.62 120.453H994.731V53.016H1050.62C1069.03 53.016 1075.7 59.2834 1075.7 73.0089V99.6765Z"/>
+    <path fill="currentColor" d="M1242.15 217.315H1398.73V177.329H1290.74V133.395H1391.68V93.0018H1290.74V53.392H1398.73V13.4062H1242.15V217.315Z"/>
+    <path fill="currentColor" d="M1521.59 13.4024V217.311H1570.18V157.709H1626.85L1666.8 217.311H1722.03L1675.01 147.9C1695.76 136.525 1702.03 123.207 1702.03 100.049V70.6235C1702.03 34.5548 1684.4 13.3711 1630.73 13.3711H1521.55L1521.59 13.4024ZM1654.69 73.0051V97.3225C1654.69 111.831 1648.02 118.882 1629.61 118.882H1570.18V53.0122H1631.17C1648.02 53.0122 1654.69 58.4961 1654.69 73.0051Z"/>
+    <path fill="currentColor" d="M1775.48 50.6297C1761.77 50.6297 1751.09 39.5992 1751.09 26.2184C1751.09 12.8375 1761.9 1.68164 1775.61 1.68164C1789.32 1.68164 1800 12.7122 1800 26.093C1800 39.4738 1789.2 50.6297 1775.48 50.6297ZM1775.64 3.78121C1762.93 3.78121 1753.35 13.9343 1753.35 26.2184C1753.35 38.5024 1762.87 48.5302 1775.52 48.5302C1788.16 48.5302 1797.81 38.3771 1797.81 26.093C1797.81 13.809 1788.29 3.78121 1775.64 3.78121ZM1780.15 27.9106L1787.91 37.9697H1783.31L1776.08 28.506H1769.66V37.9697H1765.93V12.9002H1777.14C1782.69 12.9002 1786.6 15.8145 1786.6 20.4837C1786.6 24.6202 1783.91 27.0331 1780.12 27.9106H1780.15ZM1777.05 16.2846H1769.69V25.2156H1776.86C1780.37 25.2156 1782.81 23.5861 1782.81 20.6718C1782.81 17.7574 1780.65 16.2846 1777.08 16.2846H1777.05Z"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<nav class="protobar" aria-label="Prototype">
+  <div class="wrap">
+    <span class="protobar-label"><svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg> Concept prototype — Stacey Rice</span>
+    <ul><li><a href="index.html">Homepage</a></li><li><a href="capability.html">Capability page</a></li><li><a href="strategy.html" aria-current="page">Strategy narrative</a></li></ul>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="index.html" aria-label="Draper — home">
+      <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <svg viewBox="0 0 20 14" aria-hidden="true"><rect y="0" width="20" height="2"/><rect y="6" width="20" height="2"/><rect y="12" width="20" height="2"/></svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html#breadth">What we do</a>
+      <a href="index.html#work">Our work</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#partner">Partner with us</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#news">Newsroom</a>
+      <a class="btn btn-primary" href="index.html#careers">Careers <svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="article-head">
+    <div class="wrap">
+      <h1>Redesign strategy</h1>
+      <p class="article-standfirst">The platform finding, the audience model, and the accessibility testing behind this concept for Draper.com.</p>
+      <p class="article-meta">
+        <span><strong>Stacey Rice</strong></span>
+        <span>Website Production Specialist challenge</span>
+        <span><a class="textlink" href="https://stacey1979.github.io/case-studies/">Portfolio <svg class="caret" aria-hidden="true" focusable="false"><use href="#caret"/></svg></a></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="article-grid">
+      <nav class="toc" aria-labelledby="toc-h">
+        <h2 id="toc-h">Contents</h2>
+        <ol>
+          <li><a href="#the-finding-that-shaped-this-concept">1. The finding that shaped
+this concept</a></li>
+          <li><a href="#who-this-site-is-really-for">2. Who this site is really for</a></li>
+          <li><a href="#the-strategic-idea">3. The strategic idea</a></li>
+          <li><a href="#design-direction-caret">4. Design direction: “Caret”</a></li>
+          <li><a href="#information-architecture">5. Information architecture</a></li>
+          <li><a href="#resources-to-add">6. Resources to add</a></li>
+          <li><a href="#findability-seo-aeo-and-geo">7. Findability: SEO, AEO, and
+GEO</a></li>
+          <li><a href="#accessibility-and-performance">8. Accessibility and
+performance</a></li>
+          <li><a href="#platform-recommendation">9. Platform recommendation</a></li>
+          <li><a href="#measurement">10. Measurement</a></li>
+          <li><a href="#phasing">11. Phasing</a></li>
+          <li><a href="#the-prototype">12. The prototype</a></li>
+          <li><a href="#what-id-need-to-validate">13. What I’d need to validate</a></li>
+        </ol>
+      </nav>
+
+      <article class="prose-body">
+<h2 id="the-finding-that-shaped-this-concept">1. The finding that shaped
+this concept</h2>
+<p>I looked at what draper.com runs on before I designed anything.</p>
+<p>Draper’s site assets serve from a CloudFront distribution
+(<code>d1io3yog0oux5.cloudfront.net</code>) shared with Intel, Chimera
+Investment, and Palmer Square Capital’s investor materials. The page
+URLs follow a
+<code>/media-center/news-releases/detail/{id}/{slug}</code> pattern.
+Both are signatures of <strong>Q4 Inc.’s investor relations
+platform</strong> — a CMS built for public companies to run an earnings
+cycle: filings, quarterly results, shareholder communications, stock
+tickers.</p>
+<p>Draper is an independent nonprofit. There are no shareholders, no
+filings, no earnings calls.</p>
+<p>A third signature confirms it from Draper’s own site. The published
+accessibility statement lists known delays for <strong>“Earnings
+Webcasts/Media”</strong> and <strong>“SEC Filings”</strong> —
+boilerplate carried over from the platform, on the policy page of an
+organization that has neither. The mismatch is not an inference from a
+CDN hostname; it has reached Draper’s own published compliance
+language.</p>
+<p>This is the root cause of nearly everything else I’d want to change.
+The site’s information architecture is shaped like an IR site: a
+corporate “About Us,” a seven-item “Media Center,” and a press release
+feed as the primary content engine. What’s missing is everything an
+R&amp;D organization actually needs — a project portfolio, a research
+library, a technology transfer pathway, a real recruiting
+experience.</p>
+<p><strong>The site isn’t underdesigned. It’s on the wrong
+tool.</strong></p>
+<p>That reframes the assignment. This isn’t a visual refresh three years
+on. It’s a platform decision, an audience model, and an editorial
+strategy — with a new design as the visible result.</p>
+<h2 id="who-this-site-is-really-for">2. Who this site is really for</h2>
+<p>The navigation is organized the way Draper is organized. That’s an
+org chart. Four very different audiences are sharing one path through
+it.</p>
+<p><strong>Government program managers and technical customers</strong>
+(DoD, Navy Strategic Systems, NASA, IC, BARDA) They arrive knowing a
+problem, not a market-area label. They need evidence Draper has solved
+something adjacent — a program, a prototype, a paper, a named engineer.
+Today they get capability adjectives and a press release archive.</p>
+<p><strong>Prospective engineers and scientists</strong> Draper competes
+for the same people as MIT Lincoln Laboratory, JHU APL, MITRE, Aerospace
+Corporation, and every defense prime — most of whom have better
+recruiting sites. Careers currently sits behind a dropdown and hands off
+to Workday. “Education Programs” and “Careers” are separate top-level
+items despite being the same talent pipeline at different stages.</p>
+<p><strong>Academic and industry partners</strong> DraperSPARX and
+Suppliers are exiled to a small utility bar above the logo. There is no
+visible “work with us” path, no technology licensing story, no
+explanation of how a university lab or a startup begins a
+conversation.</p>
+<p><strong>Media, policymakers, and the public</strong> Reasonably
+served today — this is the audience the IR platform happens to fit. It’s
+also the smallest.</p>
+<p><strong>The design implication:</strong> the redesign is not
+primarily about making the homepage prettier. It’s about building the
+two content layers that don’t exist yet — evidence and talent — and
+giving each audience a legible path to them.</p>
+<h2 id="the-strategic-idea">3. The strategic idea</h2>
+<blockquote>
+<h3 id="the-work-is-the-argument.">The work is the argument.</h3>
+</blockquote>
+<p>Draper’s competitive position rests on two things its competitors
+can’t easily claim: <strong>independence</strong> (nonprofit, no product
+line to defend, no shareholder pressure — a genuinely disinterested
+technical advisor) and <strong>range</strong> (concept through fielded
+prototype, in-house, across biotech, electronics, strategic, and space
+systems).</p>
+<p>The current site <em>asserts</em> both. It doesn’t
+<em>demonstrate</em> either.</p>
+<p>The organizing principle for the redesign is that every claim on the
+site anchors to a verifiable artifact — a program, a publication, a
+patent, a person, a piece of hardware. No capability page exists without
+proof attached to it. This is a rule I’d enforce in the content model
+itself, not just in the style guide: a Capability node cannot publish
+without at least one related Program, Publication, or Person
+reference.</p>
+<p>You can test a page against it. If a page is only adjectives, it
+isn’t done.</p>
+<p>This directly serves the challenge’s stated goals. Credibility comes
+from evidence, not from claiming credibility. Competitive edge comes
+from being the lab whose work is legible when the alternative is a
+brochure. Brand control comes from owning a content model rather than
+renting an IR template.</p>
+<h2 id="design-direction-caret">4. Design direction: “Caret”</h2>
+<h3 id="the-brand-draper-already-owns">The brand Draper already
+owns</h3>
+<p>Draper’s external brand style guide defines three colors and one
+mark:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Value</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Draper Orange</strong></td>
+<td><code>#FF4611</code></td>
+<td>Pantone 172 — the guide calls it “a confident orange” and directs
+that it be used in all communications where possible</td>
+</tr>
+<tr class="even">
+<td><strong>Draper Black</strong></td>
+<td><code>#10181F</code></td>
+<td>Pantone Black 6 — a blue-black, not a true black</td>
+</tr>
+<tr class="odd">
+<td><strong>Draper White</strong></td>
+<td><code>#FFFFFF</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>It also names the <strong>Caret</strong> — the “A” in the wordmark —
+as a distinct brand element with its own usage rules.</p>
+<p>The guide is seven pages, and it covers logo usage and these three
+colors. There is no typography standard, no secondary or interface
+palette, no imagery direction, and no digital or web guidance of any
+kind.</p>
+<p>Two things follow. First, the current website barely uses the brand
+it has: draper.com renders almost entirely white and gray, and Draper
+Orange — the one color the guide says to use wherever possible — is
+nearly absent. Second, the brand system has nothing to say about a
+website, which means the digital extension of the brand isn’t a liberty
+taken by this concept. It’s the missing piece, and building it is this
+role’s work.</p>
+<h3 id="the-direction">The direction</h3>
+<p><strong>Use the brand. That’s the idea.</strong></p>
+<p>Every organization Draper competes against for customers and for
+engineers — MIT Lincoln Laboratory, JHU APL, MITRE, Aerospace
+Corporation, and the primes — converges on the same visual language:
+navy and blue, dark grounds, hexagon meshes, stock imagery of people
+pointing at screens. It is one of the most visually homogeneous
+categories in American industry.</p>
+<p>Draper’s own color is a hot orange on a light ground. Follow the
+existing guidelines and you get a site nobody could confuse with a
+competitor’s. There’s no metaphor to invent here. The identity exists
+and has been sitting on a shelf.</p>
+<p><em>(Recommended deck slide: a competitive palette board — homepage
+screenshots of five peer organizations beside Draper Orange. The
+argument makes itself visually and takes ten seconds.)</em></p>
+<h3 id="the-caret-as-system-device">The Caret as system device</h3>
+<p>The caret is the logical core of the design system because it’s
+brand-native, directional, and scales from 14 pixels to full-bleed.</p>
+<ul>
+<li><strong>Wayfinding and hierarchy.</strong> Section markers, link
+affordances, breadcrumb separators, filter states, button indicators —
+one shape doing the work that generic chevrons and arrows do on every
+other site.</li>
+<li><strong>Connective tissue across breadth.</strong> The caret is what
+makes four unrelated content domains read as one company. It is the
+element that survives across a microfluidics photograph and a spacecraft
+render.</li>
+<li><strong>Forward motion.</strong> It points up and ahead. Draper’s
+own line is “We enable progress.”</li>
+</ul>
+<p>Technically it is defined once as an SVG <code>&lt;symbol&gt;</code>
+and referenced everywhere, so the mark has a single source of truth and
+the wordmark’s caret color is a CSS variable — which is how one logo
+asset serves both the dark-ground and orange-ground versions the guide
+requires.</p>
+<p><strong>Interior pages are identified by a constructed icon, not a
+photograph.</strong> The capability page carries a bearing ring built
+around the caret, with one arc drawn dashed to signify the missing
+reference. Every capability icon shares the caret at its center; what
+surrounds it identifies the subject. That implies the rest of the
+library without anyone having to draw it.</p>
+<p>I also tested the caret’s angle — 20.95° off vertical, measured from
+the official path — as a chamfer on the color bands, and removed it. The
+caret markers were already carrying that language across the page, and
+the chamfer competed rather than reinforced. Worth recording as a
+decision made and reversed rather than one never considered.</p>
+<h3 id="typography">Typography</h3>
+<p>The brand guide specifies none, so this is a proposal rather than a
+constraint.</p>
+<p><strong>Archivo</strong>, used as a single variable family across its
+full width and weight range. One typeface handles executive narrative,
+dense technical content, and publication citations without switching
+personalities, and the width axis does the display work — headlines set
+at <code>wdth 116 / wght 800</code>, body at <code>100 / 400</code>.
+That makes the display treatment a property of the type system rather
+than a second font, so the whole scale costs one file.</p>
+<p>The prototype loads it from Google Fonts. In production it should be
+self-hosted, subsetted, and preloaded.</p>
+<p>I deliberately dropped the monospace secondary face I first proposed
+for technical metadata. In practice it read as decoration rather than
+information, and tabular figures in Archivo cover the actual need.</p>
+<p>Type scale is fluid, with a hard floor of 16px anywhere on the page.
+Engineering credibility comes from clarity, not density.</p>
+<h3 id="color-rules-derived-from-contrast-testing">Color rules, derived
+from contrast testing</h3>
+<p>Draper Orange is the brand’s defining asset and it carries a hard
+accessibility constraint the brand guide does not address. The guide
+stops at three colors, so the interface palette below was built and
+tested for this concept.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Value</th>
+<th>Tested</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Draper Black</td>
+<td><code>#10181F</code></td>
+<td>17.91:1 on white</td>
+</tr>
+<tr class="even">
+<td>Draper Orange</td>
+<td><code>#FF4611</code></td>
+<td>3.42:1 on white · 5.23:1 on black</td>
+</tr>
+<tr class="odd">
+<td>Tertiary orange</td>
+<td><code>#FF6333</code></td>
+<td>6.04:1 under Draper Black · white on it is 2.96:1</td>
+</tr>
+<tr class="even">
+<td>Orange text</td>
+<td><code>#B82D08</code></td>
+<td>6.15:1 on white</td>
+</tr>
+<tr class="odd">
+<td>Muted ink</td>
+<td><code>#4E5A65</code></td>
+<td>7.06:1 on white</td>
+</tr>
+<tr class="even">
+<td>Warm ground</td>
+<td><code>#F6F4EE</code></td>
+<td>ink 16.28:1</td>
+</tr>
+<tr class="odd">
+<td>Warm tint</td>
+<td><code>#EFEBE3</code></td>
+<td>ink 15.06:1</td>
+</tr>
+<tr class="even">
+<td>Hairline</td>
+<td><code>#DBD5C9</code></td>
+<td>decorative only</td>
+</tr>
+</tbody>
+</table>
+<p>Draper’s federal customers require Section 508 conformance. The rules
+this dictates, each one a consequence of a measured number:</p>
+<ol type="1">
+<li><strong>Orange never carries body copy on white</strong> (3.42:1).
+Body text is Draper Black at 17.91:1; orange-toned links use
+<code>#B82D08</code> at 6.15:1.</li>
+<li><strong>Orange is used at display scale</strong> — headlines above
+24px, the caret, and UI components where 3:1 is sufficient.</li>
+<li><strong>Text on orange fields is Draper Black, never white.</strong>
+Ink reads 5.23:1 on the primary and 6.04:1 on the tertiary; white is
+3.42:1 and fails. This is counterintuitive and it is where most
+designers would get it wrong.</li>
+<li><strong>White carets only on true Draper Orange.</strong> The guide
+mandates a white caret on orange grounds, but on the tertiary that is
+2.96:1 — under the 3:1 floor for non-text components. The guide states
+the rule without stating its boundary.</li>
+<li><strong>Orange text on dark grounds uses the tertiary</strong>, not
+the primary — 6.04:1 against 5.23:1.</li>
+<li><strong>Focus rings invert inside orange sections.</strong> The
+orange ring is 1.15:1 on the tertiary field and effectively invisible;
+it switches to ink at 6.04:1.</li>
+</ol>
+<p>The guide doesn’t cover any of this. A tested color system is the
+part a web team reaches for every day.</p>
+<h3 id="imagery-and-motion">Imagery and motion</h3>
+<ul>
+<li><strong>Photograph the actual work,</strong> across all four market
+areas. The prototype uses Draper’s own photography: a researcher at a
+microfluidic instrument, a cleanroom chip, a control station, a
+spacecraft on orbit, an engineer at an electronics bench, employees
+outside the Cambridge building, and an archive frame of an
+instrumentation lecture.</li>
+<li><strong>Watch the temperature.</strong> Draper’s published
+photography runs heavily cool-blue, which is the exact palette the
+concept argues its competitors all live in. The market tiles are
+deliberately balanced warm, cool, dark, near-black so the orange stays
+dominant.</li>
+<li><strong>Optimize on ingest.</strong> Source files ran 2–8.5 MB.
+Every image was resampled and re-encoded — the museum frame went from
+8.5 MB to 547 KB, a 93% reduction. An image pipeline is part of this
+role, and shipping an 8 MB hero would undercut the performance argument
+being made about the current site.</li>
+<li><strong>Motion is two ideas.</strong> Images breathe slightly on
+hover; carets move the way they point. One slow settle on the hero at
+load. Nothing is scroll-triggered, and the whole set is gated on
+<code>prefers-reduced-motion</code> — which also removes the current
+site’s autoplaying hero video and its second background video below the
+fold.</li>
+<li><strong>Heritage as a live thread.</strong> The founding
+instrumentation work and the Draper Museum are among the strongest brand
+assets in American engineering, currently reduced to a paragraph and a
+set of opening hours.</li>
+</ul>
+<p>It should read as confident and open, and it will be the only site in
+the category that isn’t blue.</p>
+<h2 id="information-architecture">5. Information architecture</h2>
+<p><strong>Today (7 primary + 3 utility):</strong> About Us · What We Do
+· Market Areas · Media Center (7 children) · Careers · Education
+Programs · Contact — with DraperSPARX, Suppliers, and Visitor
+Information stranded in a utility bar.</p>
+<p>Two structural problems. First, “What We Do” (capabilities) and
+“Market Areas” (markets) are a real internal distinction that visitors
+have to decode — a program manager doesn’t know which one holds their
+answer, so they try both. Second, the deepest, most elaborate section of
+the site is the press release archive.</p>
+<p><strong>Proposed:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>What changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>What We Do</strong></td>
+<td>Capabilities and markets merge into one navigable matrix. Enter from
+either axis, land in the same place.</td>
+</tr>
+<tr class="even">
+<td><strong>Our Work</strong></td>
+<td><strong>New.</strong> Faceted program and project library — the
+evidence layer. Filter by market, capability, customer type,
+partner.</td>
+</tr>
+</tbody>
+</table>
+<p>On the homepage these two surface as a single section. Each of the
+four market areas carries its own proof item directly beneath its
+description, so the page enforces the content-model rule rather than
+asserting it: no capability appears without something Draper built
+attached to it. Presenting them as two separate registers, which is how
+this concept started, duplicated three of the four markets within one
+scroll. | <strong>Research</strong> | <strong>New.</strong>
+Publications, technical papers, patents, conference presentations. | |
+<strong>Partner With Us</strong> | DraperSPARX, technology transfer and
+licensing, suppliers, university collaboration — unified into one
+visible path. | | <strong>Careers</strong> | Absorbs Education Programs.
+One talent pipeline: students → Draper Scholars → service members →
+professionals. | | <strong>About</strong> | History, the Draper Museum,
+leadership, Engineering Fellows, and the independence story told as
+positioning rather than boilerplate. | | <strong>Newsroom</strong> |
+Seven items flattened to news, stories, events, and press kit. |</p>
+<p>Two new sections, one merge, one flattening. Net: fewer things in the
+nav, far more substance behind them.</p>
+<h2 id="resources-to-add">6. Resources to add</h2>
+<p>The challenge asks explicitly what resources to add. Ranked by
+impact:</p>
+<ol type="1">
+<li><strong>Program &amp; project library</strong> — faceted,
+filterable, cross-linked to capabilities and people. The single
+highest-value addition. This is what a program manager came for.</li>
+<li><strong>Publications &amp; patents repository</strong> — an R&amp;D
+organization with no visible research output is invisible to the exact
+people evaluating it. See section 7.</li>
+<li><strong>Unified careers hub</strong> — job feed integrated from
+Workday with <code>JobPosting</code> structured data, engineer profiles,
+life-at-Draper content, and the education pipeline in one place.</li>
+<li><strong>Technology transfer &amp; partnering pathway</strong> — a
+clear front door for licensing, CRADAs, and university
+collaboration.</li>
+<li><strong>Draper Museum digital experience</strong> — Apollo Guidance
+Computer heritage, archive holdings, visitor booking. A brand asset
+currently reduced to hours and an email address.</li>
+<li><strong>Working site search</strong> — federated across the new
+content types, with facets. Currently a basic search box against a
+shallow site.</li>
+<li><strong>Accessibility statement and VPAT</strong> — Draper’s
+customers are federal. Section 508 conformance documentation is a
+procurement asset, not a nicety.</li>
+</ol>
+<h2 id="findability-seo-aeo-and-geo">7. Findability: SEO, AEO, and
+GEO</h2>
+<p>How people find a defense R&amp;D lab has changed since this site was
+last updated. A program manager asking “who does microphysiological
+systems work for BARDA” increasingly asks an AI assistant, not Google. A
+graduate student asking “which labs work on lunar navigation” does the
+same.</p>
+<p>Answering those questions requires content an answer engine can cite.
+Right now, the citable surface area of draper.com is thin — mostly press
+releases, which are announcements rather than explanations.</p>
+<p>The program I’d run:</p>
+<ul>
+<li><strong>Structured data across the board.</strong>
+<code>Organization</code>, <code>ScholarlyArticle</code> for
+publications, <code>JobPosting</code> for openings, <code>Article</code>
+and <code>FAQPage</code> for capability content, <code>Event</code> for
+museum and student events. This is the mechanical prerequisite for AI
+citation.</li>
+<li><strong>Answer-shaped content.</strong> Each capability page opens
+with a direct, extractable answer to the question it exists to serve,
+before the narrative.</li>
+<li><strong>The publications library as the citation engine.</strong>
+Papers, patents, and technical explainers are the most citable content
+an R&amp;D organization can publish, and Draper currently publishes
+almost none of it publicly.</li>
+<li><strong>Entity consistency.</strong> Draper’s name, structure, and
+expertise areas expressed consistently enough that models resolve
+“Draper” to the right entity — non-trivial given Draper Laboratory,
+Draper Associates, and Draper Startup House all compete for the
+term.</li>
+<li><strong>Baseline first.</strong> I would not commit to targets
+before seeing GSC and GA4 data. My method is the one I ran at UChicago:
+instrument, baseline, remediate, monitor — SEO score 87 → 93.8, against
+an industry benchmark of 83.1.</li>
+</ul>
+<p><em>(Related work: the AEO &amp; GEO audit engine and Search
+Visibility Program case studies in my portfolio.)</em></p>
+<h2 id="accessibility-and-performance">8. Accessibility and
+performance</h2>
+<p>Draper sells to the federal government. Section 508 conformance is a
+contractual reality, not a preference — and the site’s current
+accessibility statement is a page, not a program.</p>
+<p><strong>The prototype was tested, not assumed.</strong> Every color
+pair in use was measured, and four failures were found and fixed:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue found</th>
+<th>Was</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Focus ring inside the orange careers band</td>
+<td>1.15:1</td>
+<td>6.04:1 — ring inverts to ink</td>
+</tr>
+<tr class="even">
+<td>Filter chip borders on the dark section</td>
+<td>1.86:1</td>
+<td>3.44:1</td>
+</tr>
+<tr class="odd">
+<td>Mobile menu button border</td>
+<td>1.46:1</td>
+<td>7.06:1</td>
+</tr>
+<tr class="even">
+<td>Job location text at 78% opacity on orange</td>
+<td>4.48:1</td>
+<td>5.03:1</td>
+</tr>
+</tbody>
+</table>
+<p>The focus-ring failure is the one that matters most: a keyboard user
+tabbing through the careers section would have lost track of their
+position entirely. It is also invisible to a purely visual review, which
+is the argument for testing rather than eyeballing.</p>
+<p>Seventy-five decorative caret graphics were also hidden from
+assistive technology. As inline SVG without <code>aria-hidden</code>, a
+screen reader may announce each as an unnamed graphic — an interruption
+before every link and heading on the page.</p>
+<p><strong>What passes:</strong> all body text (lowest ratio 5.03:1),
+display type, links, UI component borders, and remaining focus states.
+Structurally: one <code>h1</code> per page, no skipped heading levels, a
+skip link, labelled landmarks, alt text on every image, a real label on
+the search field, a 16px type floor and 44px minimum touch targets.</p>
+<p><strong>What still needs manual testing</strong> before any
+conformance claim: reflow at 320px and 400% zoom, text-spacing
+overrides, screen reader output, and end-to-end keyboard operation. The
+mobile menu also needs focus management and an Escape handler.</p>
+<p>So the accurate line is: built to WCAG 2.2 AA, contrast and structure
+tested, manual screen reader and zoom passes still to come.</p>
+<p>Accessibility belongs in the component library, so editors inherit it
+instead of being trained to preserve it — which is what produced a
+16-point accessibility gain and a QA score from 84.3 to 97.1 at
+UChicago. Monitoring wires into editorial workflow so regressions
+surface in days. A performance budget is enforced in CI, and a VPAT is
+published as a procurement asset.</p>
+<h2 id="platform-recommendation">9. Platform recommendation</h2>
+<p><strong>Drupal 11, hosted on Acquia Cloud.</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Requirement</th>
+<th>Why Drupal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Structured content</td>
+<td>The capability × market × program × publication × person model is a
+genuine content architecture. Drupal’s entity and taxonomy system is
+built for exactly this; an IR platform is not.</td>
+</tr>
+<tr class="even">
+<td>Editorial governance</td>
+<td>Granular roles, workflow states, and revision control — necessary
+when engineering content requires security and public-affairs review
+before publication.</td>
+</tr>
+<tr class="odd">
+<td>Accessibility</td>
+<td>Core has a formal accessibility commitment and ships accessible
+admin and front-end patterns.</td>
+</tr>
+<tr class="even">
+<td>Cost</td>
+<td>No license fees. Appropriate stewardship for a nonprofit.</td>
+</tr>
+<tr class="odd">
+<td>Security posture</td>
+<td>Acquia Cloud holds FedRAMP authorization. Given Draper’s CMMC Level
+2 certification and federal customer base, hosting that matches the
+organization’s security posture is defensible in a way commercial shared
+hosting is not.</td>
+</tr>
+<tr class="even">
+<td>Ownership</td>
+<td>Open source. Draper owns the content model and the code, and is not
+renting a template designed for someone else’s business.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Considered, not recommended:</strong></p>
+<ul>
+<li><strong>WordPress VIP</strong> — faster editorially, materially
+weaker for structured, deeply interrelated content. Would reproduce the
+current problem in nicer clothes.</li>
+<li><strong>Fully headless (Next.js + a SaaS CMS)</strong> — technically
+appealing, but it adds a JavaScript build pipeline and a second system
+to a small web team. Operational risk without proportional benefit.
+Drupal 11 can go decoupled later for specific surfaces if a case
+emerges.</li>
+<li><strong>Staying on Q4</strong> — the platform is competent at what
+it was built for. Draper doesn’t need what it was built for.</li>
+</ul>
+<p><strong>Pantheon</strong> is a credible lower-cost alternative to
+Acquia if FedRAMP-aligned hosting isn’t required for a public marketing
+property. I’d want that decision made with Draper’s security team rather
+than assumed. I’ve run production Drupal on Pantheon and would be
+comfortable either way.</p>
+<p><strong>Intranet:</strong> SharePoint Online stays. It’s the right
+tool for an internal employee portal in a Microsoft environment, and
+replacing it isn’t the problem. The opportunity is connection — using
+Microsoft Graph API to surface selected internal content (employee
+stories, club activity, recognitions) onto the public careers pages, so
+recruiting content stays current without duplicate authoring. One
+source, two audiences.</p>
+<h2 id="measurement">10. Measurement</h2>
+<p>Success criteria I’d set with stakeholders, baselined in the first 30
+days:</p>
+<ul>
+<li><strong>Customers:</strong> contact and partnership inquiries; depth
+of engagement in Our Work and Research; return visits from
+<code>.mil</code>, <code>.gov</code>, and known partner domains.</li>
+<li><strong>Talent:</strong> careers-page-to-Workday conversion,
+application starts, source attribution, time-to-fill on hard technical
+requisitions.</li>
+<li><strong>Findability:</strong> organic visibility on capability
+terms, citation appearance in AI answer engines, publication library
+indexation.</li>
+<li><strong>Quality:</strong> Core Web Vitals, accessibility score
+trend, broken link and content-quality scores.</li>
+<li><strong>Operations:</strong> time from content request to
+publication — the metric that tells you whether governance is
+working.</li>
+</ul>
+<h2 id="phasing">11. Phasing</h2>
+<p><strong>Phase 0 — Discovery (4–6 weeks).</strong> Content inventory
+and audit of the existing site. Stakeholder interviews across
+engineering, communications, HR, and security. Analytics baseline.
+Determination of what can and cannot be published publicly.</p>
+<p><strong>Phase 1 — Foundation.</strong> Content model, design system,
+component library, accessibility standards, editorial governance and
+workflow. Migration of existing content.</p>
+<p><strong>Phase 2 — Evidence layer.</strong> Our Work and Research. The
+highest-value new capability, launched with enough content to be
+credible on day one.</p>
+<p><strong>Phase 3 — Talent.</strong> Unified careers hub, Workday
+integration, Graph API connection to SharePoint.</p>
+<p><strong>Phase 4 — Optimization.</strong> Structured data rollout,
+performance tuning, ongoing accessibility monitoring, iterative content
+development.</p>
+<h2 id="the-prototype">12. The prototype</h2>
+<p>The concept is a working build, not a set of mockups.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>index.html</code></td>
+<td>Homepage</td>
+</tr>
+<tr class="even">
+<td><code>capability.html</code></td>
+<td>Capability page — the interior template, “Navigation without
+GPS”</td>
+</tr>
+<tr class="odd">
+<td><code>draper.css</code></td>
+<td>Shared design system: tokens, components, responsive and motion
+rules</td>
+</tr>
+<tr class="even">
+<td><code>img/</code></td>
+<td>Optimized photography and the generated caret asset</td>
+</tr>
+<tr class="odd">
+<td><code>*-standalone.html</code></td>
+<td>Self-contained copies with CSS and images inlined, for presenting
+without a server</td>
+</tr>
+</tbody>
+</table>
+<p>Two things about the build are worth pointing at.</p>
+<p><strong>The stylesheet is shared, and consolidating it surfaced real
+bugs.</strong> The two pages were built with their own styles and
+drifted apart; merging them into one system exposed seven conflicts, a
+rule that had silently never applied, and a generic selector that was
+safe in isolation but collided once both pages used it. That is the
+argument for component-scoped naming and a single source of truth, made
+from evidence rather than principle.</p>
+<p><strong>Section rhythm is a token, not a duplicated value.</strong>
+Interior pages set <code>--section-y</code> via a body class rather than
+redefining the rule. One property, set per page type.</p>
+<h2 id="what-id-need-to-validate">13. What I’d need to validate</h2>
+<p>Stating these is part of the recommendation. An outside-in analysis
+has limits, and pretending otherwise would be the wrong signal.</p>
+<ol type="1">
+<li><strong>Publication review process.</strong> How much program
+content can actually be published? Some Draper work is classified,
+export-controlled, or customer-restricted. The evidence layer only works
+if there’s a workable security and public-affairs review path, and that
+constraint should shape the content model rather than be discovered
+after launch.</li>
+<li><strong>Content volume.</strong> A full inventory determines
+migration scope and whether Phase 2 launches with 20 programs or
+200.</li>
+<li><strong>Q4 contract terms.</strong> Renewal timing affects
+sequencing and the cost argument.</li>
+<li><strong>Brand extension approval.</strong> The external style guide
+covers logo and three colors. Typography, the interface palette, imagery
+direction, and motion standards proposed here extend the brand into
+territory it doesn’t currently define, and that extension needs sign-off
+from Draper Communications. Whether an internal guide already covers
+this, and whether existing photography can carry the direction or a
+commission belongs in Phase 1, are open questions.</li>
+<li><strong>Analytics access.</strong> GA4 and Search Console history,
+to replace assumptions with baselines.</li>
+<li><strong>The journeys themselves.</strong> Two paths run end to end
+in the prototype — a program manager reaching a capability page and a
+contact route, an engineer reaching open roles through the work. Both
+are traced from what’s built, not drawn from research. The partner path
+stops at a link. Real journeys need session data and a handful of
+interviews, and that’s Phase 0 work.</li>
+<li><strong>Team and budget.</strong> I scoped this for a small in-house
+team with selective agency support, because that’s the shape most
+organizations this size actually have. If Draper’s is different, Phase 1
+changes.</li>
+</ol>
+
+      </article>
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot" id="partner">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="wordmark">
+        <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+        </span>
+        <address>
+          555 Technology Square<br>
+          Cambridge, MA 02139
+        </address>
+      </div>
+
+      <div>
+        <h3>Work with us</h3>
+        <ul>
+          <li><a href="index.html#partner">Start a project</a></li>
+          <li><a href="index.html#partner">Technology licensing</a></li>
+          <li><a href="index.html#partner">DraperSPARX</a></li>
+          <li><a href="index.html#partner">Suppliers</a></li>
+          <li><a href="index.html#partner">University collaboration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#work">Our work</a></li>
+          <li><a href="index.html#research">Research library</a></li>
+          <li><a href="index.html#news">Newsroom</a></li>
+          <li><a href="index.html#about">Draper Museum</a></li>
+          <li><a href="index.html#about">Our history</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Join us</h3>
+        <ul>
+          <li><a href="index.html#careers">Open roles</a></li>
+          <li><a href="index.html#careers">Draper Scholars</a></li>
+          <li><a href="index.html#careers">Internships</a></li>
+          <li><a href="index.html#careers">Veterans</a></li>
+          <li><a href="index.html#careers">Life at Draper</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-base">
+      <span>Concept prototype — Stacey Rice</span>
+      <span><a href="#">Accessibility statement</a> &nbsp; <a href="#">Privacy</a> &nbsp; <a href="#">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',String(open));
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+</script>
+
+</body>
+</html>

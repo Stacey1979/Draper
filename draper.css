@@ -366,6 +366,8 @@ a{color:inherit}
 
 /* --- system additions --- */
 .facets + .papers{margin-top:clamp(2rem,4vw,3rem)}
+
+.page-strategy{--section-y:clamp(3rem,6.5vw,5.5rem)}
 .page-capability{--section-y:clamp(3rem,6.5vw,5.5rem)}
 .pagehead h1{line-height:1.08}
 
@@ -510,6 +512,110 @@ a{color:inherit}
 .cta p{max-width:42ch;margin-top:1rem}
 .cta-actions{display:flex;flex-wrap:wrap;gap:.75rem}
 
+
+/* ============================================================
+   PROTOTYPE NAVIGATION
+   Deliberately outside the concept: a dark utility bar that sits
+   above the Draper masthead so a reviewer can tell at a glance
+   which navigation belongs to the design and which is the harness
+   for reviewing it.
+   ============================================================ */
+.protobar{background:var(--ink);color:var(--paper);border-bottom:3px solid var(--orange)}
+.protobar .wrap{
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:.6rem clamp(1rem,3vw,2rem);
+  padding-block:.7rem;
+}
+.protobar-label{
+  display:inline-flex;align-items:center;gap:.5em;
+  font-size:1rem;font-variation-settings:'wght' 650;
+  color:var(--paper);margin-right:auto;
+}
+.protobar-label .caret{color:var(--orange);width:.5em;height:.47em}
+.protobar ul{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;list-style:none;margin:0;padding:0}
+.protobar a{
+  display:inline-block;color:#B4BEC7;text-decoration:none;font-size:1rem;
+  padding:.35rem 0;border-bottom:2px solid transparent;
+}
+.protobar a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.protobar a[aria-current="page"]{color:var(--orange-3);border-bottom-color:var(--orange-3);font-variation-settings:'wght' 650}
+.protobar :focus-visible{outline-color:var(--orange-3)}
+
+/* ============================================================
+   STRATEGY NARRATIVE (long-form editorial template)
+   ============================================================ */
+.article-head{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,3vw,2.5rem)}
+.article-head h1{
+  font-variation-settings:'wdth' 112,'wght' 780;
+  font-size:clamp(2.25rem,5.4vw,4rem);line-height:1;letter-spacing:-.028em;
+  color:var(--orange);max-width:16ch;margin-bottom:clamp(1rem,2vw,1.5rem);
+}
+.article-standfirst{font-size:clamp(1.125rem,1.8vw,1.375rem);color:var(--ink-mute);max-width:52ch;line-height:1.5}
+.article-meta{
+  display:flex;flex-wrap:wrap;gap:.5rem 2rem;
+  margin-top:clamp(1.5rem,3vw,2.25rem);padding-top:1.25rem;
+  border-top:1px solid var(--rule);font-size:1rem;color:var(--ink-mute);
+}
+.article-meta strong{color:var(--ink);font-variation-settings:'wght' 650}
+
+.article-grid{
+  display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);
+  gap:clamp(2rem,5vw,4.5rem);
+  padding-bottom:clamp(3.5rem,7vw,6rem);
+}
+.toc{position:sticky;top:1.5rem;align-self:start}
+.toc h2{font-size:1rem;font-variation-settings:'wght' 650;color:var(--ink-mute);margin-bottom:.9rem}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc li{border-top:1px solid var(--rule)}
+.toc a{display:block;padding:.55rem 0;text-decoration:none;font-size:1rem;line-height:1.35;color:var(--ink)}
+.toc a:hover{color:var(--orange-text)}
+
+.prose-body{max-width:68ch}
+.prose-body h2{
+  font-variation-settings:'wdth' 108,'wght' 750;
+  font-size:clamp(1.5rem,2.8vw,2.125rem);line-height:1.15;letter-spacing:-.02em;
+  margin:clamp(2.5rem,5vw,3.5rem) 0 1rem;padding-top:1.1rem;
+  border-top:2px solid var(--ink);scroll-margin-top:1.5rem;
+}
+.prose-body h2:first-child{margin-top:0}
+.prose-body h3{
+  font-variation-settings:'wght' 700;font-size:clamp(1.0625rem,1.6vw,1.25rem);
+  margin:2rem 0 .6rem;
+}
+.prose-body p{margin-bottom:1.1rem;color:var(--ink-mute)}
+.prose-body strong{color:var(--ink);font-variation-settings:'wght' 650}
+.prose-body em{color:var(--ink-mute)}
+.prose-body a{color:var(--orange-text);text-decoration:underline;text-underline-offset:2px}
+.prose-body a:hover{color:var(--ink)}
+.prose-body ul,.prose-body ol{margin:0 0 1.25rem;padding-left:1.35rem;color:var(--ink-mute)}
+.prose-body li{margin-bottom:.55rem}
+.prose-body li::marker{color:var(--orange)}
+.prose-body code{
+  font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.92em;background:var(--paper-3);padding:.1em .35em;color:var(--ink);
+}
+.prose-body hr{display:none}
+.prose-body blockquote{
+  margin:2rem 0;padding:1.35rem 1.5rem;background:var(--paper-3);
+  border-left:6px solid var(--orange);
+}
+.prose-body blockquote h3{margin:0;font-size:clamp(1.375rem,2.6vw,1.875rem);
+  font-variation-settings:'wdth' 106,'wght' 750;color:var(--ink)}
+.prose-body blockquote p{margin:0}
+.prose-body table{
+  width:100%;border-collapse:collapse;margin:1.5rem 0 1.75rem;font-size:1rem;
+}
+.prose-body th{
+  text-align:left;vertical-align:bottom;color:var(--ink);
+  font-variation-settings:'wght' 650;
+  border-bottom:2px solid var(--ink);padding:.6rem .9rem .6rem 0;
+}
+.prose-body td{
+  vertical-align:top;color:var(--ink-mute);
+  border-bottom:1px solid var(--rule);padding:.7rem .9rem .7rem 0;
+}
+.prose-body tbody tr:hover{background:var(--paper-3)}
+
 /* ============================================================
    RESPONSIVE + MOTION
    ============================================================ */
@@ -531,6 +637,10 @@ a{color:inherit}
   .entry-market{padding-top:0}
 }
 @media (max-width:980px){
+  .article-grid{grid-template-columns:minmax(0,1fr)}
+  .toc{position:static}
+  .toc ol{columns:2;column-gap:2rem}
+
   .nav{
     display:none;position:absolute;top:100%;left:0;right:0;
         flex-direction:column;align-items:stretch;gap:0;
