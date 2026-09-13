@@ -30,14 +30,16 @@
   --paper:#FFFFFF;
 
   /* Extended interface palette — each value contrast-tested */
-  --paper-2:#F2F4F5;      /* tint of Draper Black, not a warm cream */
-  --rule:#D5DBDF;
+  --paper-2:#EFEBE3;      /* warm neutral, one step below paper-3 */
+  --paper-3:#F6F4EE;     /* warm ground — ink 16.28:1, ink-mute 6.42:1 */      /* tint of Draper Black, not a warm cream */
+  --rule:#DBD5C9;         /* warm hairline */
   --ink-mute:#4E5A65;     /* 7.06:1 on white */
   --orange-text:#B82D08;  /* 6.15:1 on white — orange at body size */
 
   --measure:62ch;
   --gutter:clamp(1.25rem,5vw,4.5rem);
   --bar:clamp(3.5rem,7vw,6rem);
+  --tilepad:clamp(1rem,1.8vw,1.75rem);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -72,6 +74,7 @@ a{color:inherit}
   transition:top .15s;
 }
 .skip:focus{top:1rem}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 
 .wrap{
   max-width:82rem;margin:0 auto;
@@ -92,9 +95,12 @@ a{color:inherit}
 .frame.is-empty .shotnote{display:block}
 .frame-wide{aspect-ratio:24/9}
 .frame-tile{aspect-ratio:4/3;margin-bottom:1.25rem}
+.area:nth-child(2) .frame-tile img{object-position:18% center}
+.area:nth-child(3) .frame-tile img{object-position:30% center}
 .frame-thumb{aspect-ratio:3/2}
 .frame-tall{aspect-ratio:4/5}
-.careers-grid .frame-tall img{object-position:47% center}
+.frame-band{aspect-ratio:3/1;margin:clamp(2.25rem,5vw,3.5rem) 0 0}
+.frame-band img{object-position:50% 44%}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 
 .caret{
@@ -119,15 +125,14 @@ a{color:inherit}
    .lm-word inherits currentColor (Draper Black on light, white on dark);
    .lm-caret always carries Draper Orange. */
 .wordmark{
-  display:flex;align-items:center;
+  display:flex;align-items:center;justify-content:flex-start;
   text-decoration:none;color:var(--ink);
   margin-right:auto;
 }
-.logo{display:block;width:auto;height:clamp(1.15rem,1.9vw,1.5rem)}
-
+.logo{display:block;flex:none;height:clamp(1.15rem,1.9vw,1.5rem);width:auto;aspect-ratio:1800/219}
 
 .nav{display:flex;align-items:center;gap:clamp(.9rem,2vw,1.9rem)}
-.nav a{
+.nav a:not(.btn){
   text-decoration:none;
   font-variation-settings:'wght' 500;
   font-size:1rem;
@@ -135,7 +140,7 @@ a{color:inherit}
   border-bottom:2px solid transparent;
   transition:border-color .12s,color .12s;
 }
-.nav a:hover{color:var(--orange-text);border-bottom-color:var(--orange)}
+.nav a:not(.btn):hover{color:var(--orange-text);border-bottom-color:var(--orange)}
 
 .btn{
   display:inline-flex;align-items:center;gap:.5em;
@@ -203,11 +208,11 @@ a{color:inherit}
 /* ============================================================
    WHAT WE DO — market areas with proof attached
    ============================================================ */
-.breadth{border-top:1px solid var(--ink)}
+.breadth{border-top:1px solid var(--ink);background:var(--paper-3)}
 .breadth-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
-.area{padding:0 clamp(1rem,1.8vw,1.75rem);border-right:1px solid var(--rule)}
-.area:first-child{padding-left:0}
-.area:last-child{padding-right:0;border-right:0}
+.breadth-grid{margin-inline:calc(-1 * var(--tilepad))}
+.area{padding-inline:var(--tilepad);border-right:1px solid var(--rule)}
+.area:last-child{border-right:0}
 .area h2{font-variation-settings:'wdth' 104,'wght' 700;font-size:clamp(1.0625rem,1.7vw,1.375rem);margin-bottom:.5rem}
 .area h2 a{display:flex;align-items:baseline;gap:.5em;text-decoration:none}
 .area h2 .caret{color:var(--orange);width:.58em;height:.55em}
@@ -224,8 +229,7 @@ a{color:inherit}
    HERITAGE
    ============================================================ */
 .heritage{display:grid;gap:clamp(1.75rem,4vw,4rem);grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
-.frame-museum{aspect-ratio:4/3}
-.frame-museum img{object-position:50% 42%}  /* keep the moon and the floor below it */
+.frame-museum{aspect-ratio:3/2}   /* matches the archive print — no crop */
 .heritage h2{font-variation-settings:'wdth' 110,'wght' 750;font-size:clamp(1.625rem,3.4vw,2.5rem);max-width:18ch;margin-bottom:1.25rem}
 .heritage p{color:var(--ink-mute);max-width:56ch;margin-bottom:1.15rem}
 .museum{margin-top:clamp(1.5rem,3vw,2.25rem);padding-top:1.5rem;border-top:1px solid var(--rule)}
@@ -238,7 +242,6 @@ a{color:inherit}
 .section{padding-block:clamp(3.5rem,8vw,6.5rem)}
 .section-tint{background:var(--paper-2)}
 .section-ink{background:var(--ink);color:var(--paper)}
-
 
 .section-head{
   display:grid;gap:1.25rem clamp(2rem,5vw,4rem);
@@ -263,7 +266,9 @@ a{color:inherit}
 }
 .textlink .caret{transform:rotate(90deg);width:.64em;height:.6em}
 .textlink:hover{color:var(--ink);border-bottom-color:var(--ink)}
-.section-ink .textlink{color:var(--orange);border-bottom-color:var(--orange)}
+.more{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
+.breadth .more{margin-top:clamp(3rem,6vw,4.5rem)}
+.section-ink .textlink{color:var(--orange-3);border-bottom-color:var(--orange-3)}
 .section-ink .textlink:hover{color:var(--paper);border-bottom-color:var(--paper)}
 
 /* ============================================================
@@ -292,7 +297,7 @@ a{color:inherit}
   border:1px solid #3B4650;padding:.5rem .95rem;min-height:44px;cursor:pointer;
 }
 .facet{display:inline-flex;align-items:center;gap:.5em}
-.facet .caret{color:var(--orange);width:.5em;height:.47em}
+.facet .caret{color:var(--orange-3);width:.5em;height:.47em}
 .facet[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:var(--ink);font-variation-settings:'wght' 650}
 .facet[aria-pressed="true"] .caret{color:var(--paper)}
 .facet:hover{border-color:var(--paper)}
@@ -308,7 +313,7 @@ a{color:inherit}
   font-variation-settings:'wght' 600;
   font-size:1.0625rem;line-height:1.35;max-width:52ch;
 }
-.papers a:hover h3{color:var(--orange)}
+.papers a:hover h3{color:var(--orange-3)}
 .papers .meta{color:#8C99A4;font-size:1rem;line-height:1.4}
 
 /* ============================================================
@@ -316,7 +321,7 @@ a{color:inherit}
    ============================================================ */
 .careers-grid{
   display:grid;gap:clamp(1.75rem,4vw,3.5rem);
-  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
   align-items:center;
 }
 .careers-grid h2{
@@ -359,8 +364,8 @@ a{color:inherit}
   display:grid;gap:clamp(1.75rem,4vw,3rem);
   grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));
 }
-.foot .wordmark{color:var(--paper);margin-right:0;margin-bottom:1.15rem}
-.foot .logo{height:1.6rem}
+.foot .wordmark{color:var(--paper);margin-right:auto;margin-bottom:1.15rem;justify-content:flex-start}
+.foot .logo{height:1.6rem;width:auto;aspect-ratio:1800/219}
 .foot address{font-style:normal;color:#8C99A4;font-size:1rem;line-height:1.6}
 .foot h3{
   font-variation-settings:'wght' 650;font-size:1rem;
@@ -369,7 +374,7 @@ a{color:inherit}
 .foot ul{list-style:none;margin:0;padding:0}
 .foot li{margin-bottom:.55rem}
 .foot li a{color:#B4BEC7;text-decoration:none;font-size:1rem}
-.foot li a:hover{color:var(--orange)}
+.foot li a:hover{color:var(--orange-3)}
 .foot-base{
   margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.5rem;
   border-top:1px solid #2A343E;
@@ -389,7 +394,6 @@ a{color:inherit}
   @keyframes rise{to{opacity:1;transform:none}}
 }
 
-
 /* Tertiary orange softens the large fields; the caret rule below keeps
    white carets on true Draper Orange, where they clear 3:1. */
 .section-orange{background:var(--orange-3);color:var(--ink)}
@@ -401,18 +405,37 @@ a{color:inherit}
 .wordmark.on-orange{--logo-caret:#FFFFFF}
 
 /* ============================================================
+   MOTION
+   Two ideas only: images breathe on hover, and carets move the
+   way they point. Nothing is scroll-triggered, and the whole
+   block is gated on prefers-reduced-motion.
+   ============================================================ */
+
+@media (prefers-reduced-motion:no-preference){
+  .frame img{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+  .area:hover .frame img,
+  .entry:hover .frame img{transform:scale(1.045)}
+
+  .caret{transition:transform .25s cubic-bezier(.2,.7,.3,1)}
+  .area:hover h2 .caret,
+  .proof:hover .proof-title .caret,
+  .entry:hover h3 .caret{transform:translateY(-4px)}
+  .textlink:hover .caret,
+  .btn:hover .caret{transform:rotate(90deg) translateY(-4px)}
+  .span-tag:hover .caret{transform:translateY(-3px)}
+
+  .hero-figure img{animation:settle 14s cubic-bezier(.16,.7,.3,1) forwards}
+  @keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width:1180px){
-  .careers-grid,.independence{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .careers-grid .frame,.independence .frame{grid-column:1 / -1;aspect-ratio:21/9}
 }
 @media (max-width:1080px){
   .breadth-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2.25rem,4vw,3rem) 0}
-  .area:nth-child(2n){padding-right:0;border-right:0}
-  .area:nth-child(2n+1){padding-left:0}
-  .heritage{grid-template-columns:minmax(0,1fr)}
-  .heritage .frame{aspect-ratio:21/9}
+  .area:nth-child(2n){border-right:0}
 }
 @media (max-width:980px){
   .nav{
@@ -422,21 +445,28 @@ a{color:inherit}
     padding:.5rem var(--gutter) 1.5rem;
   }
   .nav.open{display:flex}
-  .nav a{padding:.9rem 0;border-bottom:1px solid var(--rule)}
+  .nav a:not(.btn){padding:.9rem 0;border-bottom:1px solid var(--rule)}
   .nav .btn{margin-top:1rem;justify-content:center;border-bottom-width:2px}
   .menu-btn{display:inline-flex}
-  .section-head,.careers-grid,.independence,.papers a{grid-template-columns:minmax(0,1fr)}
+  .section-head,.careers-grid,.papers a{grid-template-columns:minmax(0,1fr)}
+  .frame-band{aspect-ratio:2.2/1}
   .hero-grid{grid-template-columns:minmax(0,1fr);gap:0;padding-left:0}
   .hero-content{padding-inline:var(--gutter)}
   .hero-figure{min-height:0;aspect-ratio:16/10}
-  .careers-grid .frame,.independence .frame{aspect-ratio:16/9}
   .hero-actions{justify-content:flex-start}
   .section-head{align-items:start}
   .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media (max-width:700px){
+  .independence{grid-template-columns:minmax(0,1fr)}
+  .heritage{grid-template-columns:minmax(0,1fr)}
+  .heritage .frame{aspect-ratio:16/10}
+}
 @media (max-width:640px){
   .breadth-grid{grid-template-columns:minmax(0,1fr)}
   .frame-wide{aspect-ratio:16/10}
+  .frame-band{aspect-ratio:16/9}
+  .breadth-grid{margin-inline:0}
   .area{padding-inline:0;border-right:0}
   .finder{grid-template-columns:minmax(0,1fr)}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
@@ -464,7 +494,7 @@ a{color:inherit}
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="index.html" aria-label="Draper — home">
-      <svg class="logo" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+      <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
     </a>
 
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
@@ -523,7 +553,7 @@ a{color:inherit}
 
       <div class="breadth-grid">
         <div class="area">
-          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-biotech.jpg" alt="A microfluidic chip with etched channels and fluid ports" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Microfluidic device, macro</span></span>
+          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-biotech.jpg" alt="Gloved hands using a micromanipulator over a petri dish in a Draper lab" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Microfluidic device, macro</span></span>
           <h2><a href="#work"><svg class="caret"><use href="#caret"/></svg>Biotechnology Systems</a></h2>
           <p>Engineering applied to human biology — from microphysiological platforms to medical devices and biodefense.</p>
           <a class="proof" href="#work">
@@ -532,7 +562,7 @@ a{color:inherit}
           </a>
         </div>
         <div class="area">
-          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-electronics.jpg" alt="" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Wafer handling, cleanroom</span></span>
+          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-electronics.jpg" alt="A gloved hand holding a microchip in a cleanroom" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Wafer handling, cleanroom</span></span>
           <h2><a href="#work"><svg class="caret"><use href="#caret"/></svg>Electronic Systems</a></h2>
           <p>Microelectronics, sensing, and secure processing built small enough and rugged enough to deploy.</p>
           <a class="proof" href="#work">
@@ -541,7 +571,7 @@ a{color:inherit}
           </a>
         </div>
         <div class="area">
-          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-strategic.jpg" alt="" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Inertial unit under test</span></span>
+          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-strategic.jpg" alt="A pilot in a fighter cockpit with a wingman aircraft alongside" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Cockpit, aircraft in formation</span></span>
           <h2><a href="capability.html"><svg class="caret"><use href="#caret"/></svg>Strategic Systems</a></h2>
           <p>Guidance, navigation, and control for missions where there is no second attempt.</p>
           <a class="proof" href="capability.html">
@@ -550,7 +580,7 @@ a{color:inherit}
           </a>
         </div>
         <div class="area">
-          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-space.jpg" alt="" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Spacecraft component, clean tent</span></span>
+          <span class="frame frame-tile"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/area-space.jpg" alt="A spacecraft with deployed solar arrays in orbit above Earth" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><span class="shotnote"><svg class="caret"><use href="#caret"/></svg>Spacecraft component, clean tent</span></span>
           <h2><a href="#work"><svg class="caret"><use href="#caret"/></svg>Space Systems</a></h2>
           <p>Autonomy and precision navigation for spacecraft, landers, and long-duration missions.</p>
           <a class="proof" href="#work">
@@ -575,7 +605,7 @@ a{color:inherit}
       </div>
 
       <div class="finder" role="search">
-        <label class="skip" for="q">Search publications</label>
+        <label class="sr-only" for="q">Search publications</label>
         <input id="q" type="search" placeholder="Search publications, patents, and authors">
         <button type="button">Search</button>
       </div>
@@ -603,7 +633,7 @@ a{color:inherit}
         </a></li>
       </ul>
 
-      <p style="margin-top:clamp(1.75rem,3.5vw,2.5rem)">
+      <p class="more">
         <a class="textlink" href="#research">
           Open the research library
           <svg class="caret"><use href="#caret"/></svg>
@@ -630,9 +660,9 @@ a{color:inherit}
           <li><a href="#careers">Embedded Software Engineer <span class="where">Huntsville, AL</span></a></li>
           <li><a href="#careers">Draper Scholars Program <span class="where">Graduate study</span></a></li>
         </ul>
-
-        <figure class="frame frame-tall" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/careers-bench.jpg" alt="A Draper engineer probing a wired assembly at an electronics bench" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Engineer at an electronics bench</figcaption></figure>
       </div>
+
+      <figure class="frame frame-band"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/careers-bench.jpg" alt="A Draper engineer probing a wired assembly at an electronics bench" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Engineer at an electronics bench</figcaption></figure>
     </div>
   </section>
 
@@ -640,8 +670,8 @@ a{color:inherit}
   <section class="section" id="about">
     <div class="wrap">
       <div class="independence">
-        <h2>Independence is the product.</h2>
         <div>
+          <h2>Independence is the product.</h2>
           <p>Draper is a nonprofit. We hold no product line to protect and answer to no shareholders, which means our technical recommendation is the one we actually believe — including when it is that the work shouldn't proceed.</p>
           <p>That structure is why government, academic, and commercial partners bring us problems they can't hand to a vendor with something to sell.</p>
           <a class="textlink" href="#about">
@@ -650,7 +680,7 @@ a{color:inherit}
           </a>
         </div>
 
-        <figure class="frame frame-tall" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/about-review.jpg" alt="Draper engineers and a partner team reviewing work together" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Portrait — technical review, engineers and a customer team</figcaption></figure>
+        <figure class="frame frame-story" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/about-people.jpg" alt="Draper employees gathered outside the Cambridge headquarters beneath the wordmark" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Employees outside 555 Technology Square</figcaption></figure>
       </div>
     </div>
   </section>
@@ -659,7 +689,7 @@ a{color:inherit}
   <section class="section section-tint" id="heritage">
     <div class="wrap">
       <div class="heritage">
-        <figure class="frame frame-museum" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/heritage-hack-the-moon.jpg" alt="The Hack the Moon exhibit at Draper, a suspended lunar sculpture above the atrium floor" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Hack the Moon exhibit, Draper atrium</figcaption></figure>
+        <figure class="frame frame-museum" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/heritage-lecture.jpg" alt="Two men presenting orbital diagrams and an aircraft model to a seated audience in the 1950s" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Archive — instrumentation lecture, 1950s</figcaption></figure>
         <div>
           <h2>The guidance system that flew Apollo was designed here.</h2>
           <p>Draper began as an instrumentation laboratory at MIT and became an independent nonprofit in 1973. The problem it was founded on — knowing where you are when nothing outside can tell you — is the same one its engineers work on today, in vehicles that hadn't been imagined then.</p>
@@ -681,7 +711,7 @@ a{color:inherit}
     <div class="foot-grid">
       <div>
         <span class="wordmark">
-        <svg class="logo" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+        <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
         </span>
         <address>
           555 Technology Square<br>

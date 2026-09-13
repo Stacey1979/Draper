@@ -38,8 +38,9 @@
   --orange-3:#FF6333;    /* tertiary — large fields only. Ink 6.04:1; white 2.96:1 fails, so no white caret here */
   --ink:#10181F;
   --paper:#FFFFFF;
-  --paper-2:#F2F4F5;
-  --rule:#D5DBDF;
+  --paper-2:#EFEBE3;      /* warm neutral, one step below paper-3 */
+  --paper-3:#F6F4EE;      /* warm ground — ink 16.28:1 */
+  --rule:#DBD5C9;         /* warm hairline */
   --ink-mute:#4E5A65;     /* 7.06:1 on white */
   --orange-text:#B82D08;  /* 6.15:1 on white */
   --measure:62ch;
@@ -65,9 +66,9 @@ a{color:inherit}
 
 .skip{position:absolute;left:var(--gutter);top:-6rem;z-index:99;background:var(--ink);color:var(--paper);padding:.75rem 1.25rem;text-decoration:none;transition:top .15s}
 .skip:focus{top:1rem}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 
 .wrap{max-width:82rem;margin:0 auto;padding-inline:var(--gutter)}
-
 
 /* ---------- Image frames ----------
    Real photography drops into /img. Until a shot exists, each frame
@@ -90,14 +91,13 @@ a{color:inherit}
 /* ---------- Masthead ---------- */
 .masthead{border-bottom:1px solid var(--rule);position:relative;z-index:30;background:var(--paper)}
 .masthead .wrap{display:flex;align-items:center;gap:clamp(1rem,3vw,2.5rem);min-height:var(--bar)}
-.wordmark{display:flex;align-items:center;text-decoration:none;color:var(--ink);margin-right:auto}
-.logo{display:block;width:auto;height:clamp(1.15rem,1.9vw,1.5rem)}
-
+.wordmark{display:flex;align-items:center;justify-content:flex-start;text-decoration:none;color:var(--ink);margin-right:auto}
+.logo{display:block;flex:none;height:clamp(1.15rem,1.9vw,1.5rem);width:auto;aspect-ratio:1800/219}
 
 .nav{display:flex;align-items:center;gap:clamp(.9rem,2vw,1.9rem)}
-.nav a{text-decoration:none;font-variation-settings:'wght' 500;font-size:1rem;padding:.55rem 0;border-bottom:2px solid transparent;transition:border-color .12s,color .12s}
-.nav a:hover{color:var(--orange-text);border-bottom-color:var(--orange)}
-.nav a[aria-current="true"]{border-bottom-color:var(--orange)}
+.nav a:not(.btn){text-decoration:none;font-variation-settings:'wght' 500;font-size:1rem;padding:.55rem 0;border-bottom:2px solid transparent;transition:border-color .12s,color .12s}
+.nav a:not(.btn):hover{color:var(--orange-text);border-bottom-color:var(--orange)}
+.nav a:not(.btn)[aria-current="true"]{border-bottom-color:var(--orange)}
 
 .btn{display:inline-flex;align-items:center;gap:.5em;padding:.7rem 1.35rem;min-height:44px;text-decoration:none;font-variation-settings:'wght' 650;text-transform:uppercase;letter-spacing:.065em;font-size:1rem;border:2px solid var(--ink);transition:background .14s,color .14s,border-color .14s}
 .btn-primary{background:var(--orange);border-color:var(--orange);color:var(--ink)}
@@ -115,7 +115,38 @@ a{color:inherit}
 .crumbs .caret{transform:rotate(90deg);width:.5em;height:.47em;color:var(--rule)}
 .crumbs [aria-current]{color:var(--ink)}
 
-.pagehead-image{margin-top:clamp(2rem,4vw,3rem)}
+/* Text carries two thirds, the image one third, matched in height. */
+.overview-grid{
+  display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+  gap:clamp(1.75rem,4vw,3.5rem);
+  align-items:stretch;
+}
+
+.frame-side{height:100%;min-height:clamp(17rem,26vw,23rem)}
+
+/* Interior pages are identified by a constructed icon, not a photograph.
+   Built from the official caret, so every capability icon shares one mark. */
+/* Page head: copy left, capability mark occupying the image slot on the right. */
+/* Page head: copy left, capability mark in the image slot on the right.
+   Explicit placement so the mark can sit beside the heading on small
+   screens while the body copy runs full width beneath it. */
+.pagehead-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  column-gap:clamp(2rem,5vw,4.5rem);
+  align-items:start;
+  margin-top:clamp(1.5rem,3vw,2.25rem);
+}
+.pagehead-grid > h1{grid-column:1;grid-row:1;text-align:left}
+.pagehead-grid > .answer{grid-column:1;grid-row:2}
+.pagehead-grid > .spans{grid-column:1;grid-row:3}
+.page-mark-wrap{
+  grid-column:2;grid-row:1 / 4;align-self:center;
+  display:flex;align-items:center;justify-content:center;
+}
+.page-mark{width:min(100%,24rem);min-width:6.25rem;height:auto}   /* never below 100px */
+.frame-side img{object-position:50% 46%}
 .pagehead{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(2rem,4vw,3rem)}
 .pagehead h1{
   font-variation-settings:'wdth' 112,'wght' 780;
@@ -125,11 +156,12 @@ a{color:inherit}
 .spans{display:flex;flex-wrap:wrap;gap:.5rem .75rem;margin-top:clamp(1.25rem,2.5vw,1.75rem)}
 .span-tag{
   display:inline-flex;align-items:center;gap:.45em;
-  border:1px solid var(--rule);padding:.4rem .8rem;
-  font-size:1rem;color:var(--ink-mute);text-decoration:none;
+  border:1px solid var(--orange);   /* 3.42:1 on white — clears the 3:1 UI floor */
+  padding:.4rem .8rem;
+  font-size:1rem;color:var(--ink);text-decoration:none;
 }
 .span-tag .caret{width:.52em;height:.49em;color:var(--orange)}
-.span-tag:hover{border-color:var(--ink);color:var(--ink)}
+.span-tag:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
 
 /* ---------- Answer block: the citable summary ---------- */
 .answer{
@@ -155,7 +187,6 @@ a{color:inherit}
 .section-tint{background:var(--paper-2)}
 .section-ink{background:var(--ink);color:var(--paper)}
 
-
 .section h2{
   font-variation-settings:'wdth' 110,'wght' 750;
   font-size:clamp(1.625rem,3.4vw,2.5rem);
@@ -167,7 +198,9 @@ a{color:inherit}
 .textlink{display:inline-flex;align-items:center;gap:.5em;color:var(--orange-text);text-decoration:none;font-variation-settings:'wght' 600;border-bottom:2px solid var(--orange);padding-bottom:2px}
 .textlink .caret{transform:rotate(90deg);width:.64em;height:.6em}
 .textlink:hover{color:var(--ink);border-bottom-color:var(--ink)}
-.section-ink .textlink{color:var(--orange);border-bottom-color:var(--orange)}
+.more{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
+.breadth .more{margin-top:clamp(3rem,6vw,4.5rem)}
+.section-ink .textlink{color:var(--orange-3);border-bottom-color:var(--orange-3)}
 .section-ink .textlink:hover{color:var(--paper);border-bottom-color:var(--paper)}
 
 /* ---------- Approach: hairline register ---------- */
@@ -206,7 +239,7 @@ a{color:inherit}
 .papers li{border-bottom:1px solid #2A343E}
 .papers a{display:grid;gap:.35rem clamp(1.5rem,4vw,3rem);grid-template-columns:minmax(0,1fr) minmax(0,12rem);padding-block:1.35rem;text-decoration:none}
 .papers h3{font-variation-settings:'wght' 600;font-size:1.0625rem;line-height:1.35;max-width:52ch}
-.papers a:hover h3{color:var(--orange)}
+.papers a:hover h3{color:var(--orange-3)}
 .papers .meta{color:#8C99A4;font-size:1rem;line-height:1.4}
 
 /* ---------- Disciplines ---------- */
@@ -235,17 +268,16 @@ a{color:inherit}
 /* ---------- Footer ---------- */
 .foot{background:var(--ink);color:var(--paper);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
 .foot-grid{display:grid;gap:clamp(1.75rem,4vw,3rem);grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr))}
-.foot .wordmark{color:var(--paper);margin-right:0;margin-bottom:1.15rem}
-.foot .logo{height:1.6rem}
+.foot .wordmark{color:var(--paper);margin-right:auto;margin-bottom:1.15rem;justify-content:flex-start}
+.foot .logo{height:1.6rem;width:auto;aspect-ratio:1800/219}
 .foot address{font-style:normal;color:#8C99A4;font-size:1rem;line-height:1.6}
 .foot h3{font-variation-settings:'wght' 650;font-size:1rem;margin-bottom:.9rem}
 .foot ul{list-style:none;margin:0;padding:0}
 .foot li{margin-bottom:.55rem}
 .foot li a{color:#B4BEC7;text-decoration:none;font-size:1rem}
-.foot li a:hover{color:var(--orange)}
+.foot li a:hover{color:var(--orange-3)}
 .foot-base{margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.5rem;border-top:1px solid #2A343E;display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;color:#8C99A4;font-size:1rem}
 .foot-base a{color:#8C99A4}
-
 
 /* Tertiary orange softens the large fields; the caret rule below keeps
    white carets on true Draper Orange, where they clear 3:1. */
@@ -257,6 +289,30 @@ a{color:inherit}
 .btn-primary:hover .caret{color:var(--orange)}
 .wordmark.on-orange{--logo-caret:#FFFFFF}
 
+/* ============================================================
+   MOTION
+   Two ideas only: images breathe on hover, and carets move the
+   way they point. Nothing is scroll-triggered, and the whole
+   block is gated on prefers-reduced-motion.
+   ============================================================ */
+
+@media (prefers-reduced-motion:no-preference){
+  .frame img{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+  .area:hover .frame img,
+  .entry:hover .frame img{transform:scale(1.045)}
+
+  .caret{transition:transform .25s cubic-bezier(.2,.7,.3,1)}
+  .area:hover h2 .caret,
+  .proof:hover .proof-title .caret,
+  .entry:hover h3 .caret{transform:translateY(-4px)}
+  .textlink:hover .caret,
+  .btn:hover .caret{transform:rotate(90deg) translateY(-4px)}
+  .span-tag:hover .caret{transform:translateY(-3px)}
+
+  .hero-figure img{animation:settle 14s cubic-bezier(.16,.7,.3,1) forwards}
+  @keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1180px){
   .entry{grid-template-columns:minmax(0,11rem) minmax(0,8rem) minmax(0,1fr)}
@@ -266,23 +322,31 @@ a{color:inherit}
   .disciplines,.related{grid-template-columns:repeat(2,minmax(0,1fr))}
   .related a:nth-child(2){border-right:0}
   .related a:nth-child(-n+2){border-bottom:1px solid var(--rule)}
-  .entry{grid-template-columns:minmax(0,8rem) minmax(0,1fr)}
-  .entry p{grid-column:2}
+  .entry{grid-template-columns:minmax(0,9rem) minmax(0,1fr)}
+  .entry .frame{grid-row:1 / span 3}
+  .entry-market,.entry h3,.entry p{grid-column:2}
+  .entry-market{padding-top:0}
 }
 @media (max-width:980px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:.5rem var(--gutter) 1.5rem}
   .nav.open{display:flex}
-  .nav a{padding:.9rem 0;border-bottom:1px solid var(--rule)}
+  .nav a:not(.btn){padding:.9rem 0;border-bottom:1px solid var(--rule)}
   .nav .btn{margin-top:1rem;justify-content:center;border-bottom-width:2px}
   .menu-btn{display:inline-flex}
   .approach-item,.cta,.papers a{grid-template-columns:minmax(0,1fr)}
+  .pagehead-grid{grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(1rem,4vw,1.75rem)}
+  .pagehead-grid > .answer,.pagehead-grid > .spans{grid-column:1 / -1}
+  .page-mark-wrap{grid-column:2;grid-row:1;align-self:center}
+  .page-mark{width:clamp(6.25rem,18vw,8rem)}
+  .overview-grid{grid-template-columns:minmax(0,1fr)}
+  .frame-side{min-height:0;aspect-ratio:16/9}
+
   .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:640px){
-  .entry,.disciplines,.related{grid-template-columns:minmax(0,1fr)}
+  .disciplines,.related{grid-template-columns:minmax(0,1fr)}
+  .entry{grid-template-columns:minmax(0,6.5rem) minmax(0,1fr);gap:.85rem 1.1rem}
   .frame-wide{aspect-ratio:16/10}
-  .entry p{grid-column:1}
-  .entry-market{padding-top:0}
   .related a{border-right:0;border-bottom:1px solid var(--rule)}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
 }
@@ -309,7 +373,7 @@ a{color:inherit}
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="index.html" aria-label="Draper — home">
-      <svg class="logo" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+      <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
     </a>
 
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
@@ -341,6 +405,8 @@ a{color:inherit}
         <span aria-current="page">Navigation without GPS</span>
       </nav>
 
+      <div class="pagehead-grid">
+
       <h1>Navigation without GPS</h1>
 
       <div class="answer">
@@ -360,10 +426,42 @@ a{color:inherit}
           <svg class="caret"><use href="#caret"/></svg>
           Electronic Systems
         </a>
-      </div>
+        </div>
 
-      <div class="pagehead-image">
-        <figure class="frame frame-wide" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/cap-navigation-hero.jpg" alt="An inertial navigation unit undergoing test at Draper" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Wide — inertial unit on a test fixture, shallow depth of field</figcaption></figure>
+        <div class="page-mark-wrap">
+          <svg class="page-mark" viewBox="0 0 120 120" role="img" aria-labelledby="capicon" focusable="false">
+        <title id="capicon">Navigation without GPS</title>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+        <circle cx="60" cy="60" r="30" fill="none" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="60.00" y1="21.00" x2="60.00" y2="12.00" stroke="var(--ink-mute)" stroke-width="1.6"/>
+        <line x1="71.13" y1="18.47" x2="72.42" y2="13.64" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="81.50" y1="22.76" x2="84.00" y2="18.43" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="90.41" y1="29.59" x2="93.94" y2="26.06" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="97.24" y1="38.50" x2="101.57" y2="36.00" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="101.53" y1="48.87" x2="106.36" y2="47.58" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="99.00" y1="60.00" x2="108.00" y2="60.00" stroke="var(--ink-mute)" stroke-width="1.6"/>
+        <line x1="101.53" y1="71.13" x2="106.36" y2="72.42" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="97.24" y1="81.50" x2="101.57" y2="84.00" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="90.41" y1="90.41" x2="93.94" y2="93.94" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="81.50" y1="97.24" x2="84.00" y2="101.57" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="71.13" y1="101.53" x2="72.42" y2="106.36" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="60.00" y1="99.00" x2="60.00" y2="108.00" stroke="var(--ink-mute)" stroke-width="1.6"/>
+        <line x1="48.87" y1="101.53" x2="47.58" y2="106.36" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="38.50" y1="97.24" x2="36.00" y2="101.57" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="29.59" y1="90.41" x2="26.06" y2="93.94" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="22.76" y1="81.50" x2="18.43" y2="84.00" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="18.47" y1="71.13" x2="13.64" y2="72.42" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="21.00" y1="60.00" x2="12.00" y2="60.00" stroke="var(--ink-mute)" stroke-width="1.6"/>
+        <line x1="18.47" y1="48.87" x2="13.64" y2="47.58" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="22.76" y1="38.50" x2="18.43" y2="36.00" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="29.59" y1="29.59" x2="26.06" y2="26.06" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="38.50" y1="22.76" x2="36.00" y2="18.43" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="48.87" y1="18.47" x2="47.58" y2="13.64" stroke="var(--rule)" stroke-width="1"/>
+        <path d="M74.83 14.35 A48 48 0 0 1 107.88 56.65" fill="none" stroke="var(--ink-mute)" stroke-width="1.4" stroke-dasharray="3 5" stroke-linecap="round"/>
+        <line x1="60" y1="14" x2="60" y2="24" stroke="var(--ink)" stroke-width="2"/>
+        <path d="M697.844 13.4062L619.756 217.315H668.35L728.027 57.0584L787.705 217.315H836.299L758.211 13.4062H697.844Z" transform="translate(60,60) rotate(-38) scale(0.13854) translate(-728.0275,-115.3605)" fill="var(--orange)"/>
+        </svg>
+        </div>
       </div>
     </div>
   </div>
@@ -382,17 +480,19 @@ a{color:inherit}
 
   <!-- ===== OVERVIEW ===== -->
   <section class="section" id="overview">
-    <div class="wrap prose">
+    <div class="wrap">
+      <div class="overview-grid">
+        <div class="prose">
       <h2>The signal is the weakest link.</h2>
       <p>Almost everything that moves now assumes a satellite is telling it where it is. That assumption fails in more places than most systems account for: under water, under a jungle canopy, inside a contested airspace, beneath the surface of another planet. It also fails on purpose, because a signal that can be received can be jammed or imitated.</p>
       <p>Draper has worked on this problem since the beginning. The organization's founding work was inertial guidance — determining position from a system's own motion rather than from an outside reference — and that lineage runs directly into the sensors, filters, and flight software we build today.</p>
       <p>What has changed is the range of environments. The same underlying question now has to be answered for a submarine, a satellite, a lunar lander, and a hand-carried device, each with different constraints on power, size, and how much error is survivable.</p>
+        </div>
+
+        <figure class="frame frame-side" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/cap-navigation-hero.jpg" alt="An operator at a control station monitoring a tracking display" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Operator at a tracking console</figcaption></figure>
+      </div>
     </div>
   </section>
-
-  <div class="wrap" style="padding-bottom:clamp(3rem,6.5vw,5.5rem)">
-    <figure class="frame frame-wide" style="margin:0"><svg class="ghost" aria-hidden="true"><use href="#caret"/></svg><img src="img/cap-fabrication.jpg" alt="Fabrication of an inertial sensor in a Draper cleanroom" onerror="this.closest('.frame').classList.add('is-empty');this.remove()"><figcaption class="shotnote"><svg class="caret"><use href="#caret"/></svg>Wide — sensor fabrication, cleanroom, gowned technician</figcaption></figure>
-  </div>
 
   <!-- ===== APPROACH ===== -->
   <section class="section section-tint" id="approach">
@@ -465,7 +565,7 @@ a{color:inherit}
         </a>
 
       </div>
-      <p style="margin-top:clamp(1.75rem,3.5vw,2.5rem)">
+      <p class="more">
         <a class="textlink" href="index.html#work">
           See all navigation work
           <svg class="caret"><use href="#caret"/></svg>
@@ -492,7 +592,7 @@ a{color:inherit}
           <p class="meta">Peer-reviewed<br>Strategic Systems</p>
         </a></li>
       </ul>
-      <p style="margin-top:clamp(1.75rem,3.5vw,2.5rem)">
+      <p class="more">
         <a class="textlink" href="index.html#research">
           Search the research library
           <svg class="caret"><use href="#caret"/></svg>
@@ -528,7 +628,7 @@ a{color:inherit}
           <p>Algorithm developers working on filtering, fusion, and decision-making under uncertainty — several of them Draper Scholars.</p>
         </div>
       </div>
-      <p style="margin-top:clamp(1.75rem,3.5vw,2.5rem)">
+      <p class="more">
         <a class="textlink" href="index.html#careers">
           Open roles in this area
           <svg class="caret"><use href="#caret"/></svg>
@@ -588,7 +688,7 @@ a{color:inherit}
     <div class="foot-grid">
       <div>
         <span class="wordmark">
-          <svg class="logo" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
+          <svg class="logo" viewBox="0 0 1800 219" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#draper"/></svg>
         </span>
         <address>
           555 Technology Square<br>
