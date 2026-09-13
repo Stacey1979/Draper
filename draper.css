@@ -54,9 +54,11 @@ p{margin:0}
 a{color:inherit}
 :focus-visible{
   outline:3px solid var(--orange);
-    outline-offset:3px;
-    border-radius:1px;
+  outline-offset:3px;
+  border-radius:1px;
 }
+/* Orange ring is 1.15:1 on the tertiary band — ink reads 6.04:1 there */
+.section-orange :focus-visible{outline-color:var(--ink)}
 .skip{
   position:absolute;left:var(--gutter);top:-6rem;z-index:99;
     background:var(--ink);color:var(--paper);
@@ -144,7 +146,7 @@ a{color:inherit}
 .menu-btn{
   display:none;align-items:center;justify-content:center;
     width:44px;height:44px;padding:0;
-    background:none;border:1px solid var(--rule);
+    background:none;border:1px solid var(--ink-mute);
     color:var(--ink);cursor:pointer;
 }
 .menu-btn svg{width:20px;height:14px;fill:currentColor}
@@ -270,7 +272,7 @@ a{color:inherit}
 .facet{
   font:inherit;font-size:1rem;font-variation-settings:'wght' 500;
     background:transparent;color:var(--paper);
-    border:1px solid #3B4650;padding:.5rem .95rem;min-height:44px;cursor:pointer;
+    border:1px solid #626E7A;padding:.5rem .95rem;min-height:44px;cursor:pointer;
 }
 .facet{display:inline-flex;align-items:center;gap:.5em}
 .facet .caret{color:var(--orange-3);width:.5em;height:.47em}
@@ -314,7 +316,7 @@ a{color:inherit}
     padding:.95rem 0;text-decoration:none;
     font-variation-settings:'wght' 600;
 }
-.roles .where{font-variation-settings:'wght' 400;font-size:1rem;opacity:.75}
+.roles .where{font-variation-settings:'wght' 400;font-size:1rem;opacity:.85}
 .roles a:hover{padding-left:.5rem}
 .careers-actions{margin-top:1.75rem}
 .section-orange .btn-ghost:hover{background:var(--ink);color:var(--orange)}
