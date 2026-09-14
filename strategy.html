@@ -140,8 +140,7 @@ something adjacent — a program, a prototype, a paper, a named engineer.
 Today they get capability adjectives and a press release archive.</p>
 <p><strong>Prospective engineers and scientists</strong> Draper competes
 for the same people as MIT Lincoln Laboratory, JHU APL, MITRE, Aerospace
-Corporation, and every defense prime — most of whom have better
-recruiting sites. Careers currently sits behind a dropdown and hands off
+Corporation, and every defense prime. Careers currently sits behind a dropdown and hands off
 to Workday. “Education Programs” and “Careers” are separate top-level
 items despite being the same talent pipeline at different stages.</p>
 <p><strong>Academic and industry partners</strong> DraperSPARX and
@@ -150,7 +149,7 @@ visible “work with us” path, no technology licensing story, no
 explanation of how a university lab or a startup begins a
 conversation.</p>
 <p><strong>Media, policymakers, and the public</strong> Reasonably
-served today — this is the audience the IR platform happens to fit. It’s
+served today — this is the audience the IR platform fit, but it’s
 also the smallest.</p>
 <p><strong>The design implication:</strong> the redesign is not
 primarily about making the homepage prettier. It’s about building the
@@ -169,7 +168,7 @@ systems).</p>
 <p>The current site <em>asserts</em> both. It doesn’t
 <em>demonstrate</em> either.</p>
 <p>The organizing principle for the redesign is that every claim on the
-site anchors to a verifiable artifact — a program, a publication, a
+site anchors to a verifiable artifact: a program, a publication, a
 patent, a person, a piece of hardware. No capability page exists without
 proof attached to it. This is a rule I’d enforce in the content model
 itself, not just in the style guide: a Capability node cannot publish
@@ -242,11 +241,7 @@ pointing at screens. It is one of the most visually homogeneous
 categories in American industry.</p>
 <p>Draper’s own color is a hot orange on a light ground. Follow the
 existing guidelines and you get a site nobody could confuse with a
-competitor’s. There’s no metaphor to invent here. The identity exists
-and has been sitting on a shelf.</p>
-<p><em>(Recommended deck slide: a competitive palette board — homepage
-screenshots of five peer organizations beside Draper Orange. The
-argument makes itself visually and takes ten seconds.)</em></p>
+competitor’s.</p>
 <h3 id="the-caret-as-system-device">The Caret as system device</h3>
 <p>The caret is the logical core of the design system because it’s
 brand-native, directional, and scales from 14 pixels to full-bleed.</p>
@@ -273,11 +268,6 @@ around the caret, with one arc drawn dashed to signify the missing
 reference. Every capability icon shares the caret at its center; what
 surrounds it identifies the subject. That implies the rest of the
 library without anyone having to draw it.</p>
-<p>I also tested the caret’s angle — 20.95° off vertical, measured from
-the official path — as a chamfer on the color bands, and removed it. The
-caret markers were already carrying that language across the page, and
-the chamfer competed rather than reinforced. Worth recording as a
-decision made and reversed rather than one never considered.</p>
 <h3 id="typography">Typography</h3>
 <p>The brand guide specifies none, so this is a proposal rather than a
 constraint.</p>
@@ -290,9 +280,6 @@ That makes the display treatment a property of the type system rather
 than a second font, so the whole scale costs one file.</p>
 <p>The prototype loads it from Google Fonts. In production it should be
 self-hosted, subsetted, and preloaded.</p>
-<p>I deliberately dropped the monospace secondary face I first proposed
-for technical metadata. In practice it read as decoration rather than
-information, and tabular figures in Archivo cover the actual need.</p>
 <p>Type scale is fluid, with a hard floor of 16px anywhere on the page.
 Engineering credibility comes from clarity, not density.</p>
 <h3 id="color-rules-derived-from-contrast-testing">Color rules, derived
@@ -367,8 +354,7 @@ Body text is Draper Black at 17.91:1; orange-toned links use
 24px, the caret, and UI components where 3:1 is sufficient.</li>
 <li><strong>Text on orange fields is Draper Black, never white.</strong>
 Ink reads 5.23:1 on the primary and 6.04:1 on the tertiary; white is
-3.42:1 and fails. This is counterintuitive and it is where most
-designers would get it wrong.</li>
+3.42:1 and fails.</li>
 <li><strong>White carets only on true Draper Orange.</strong> The guide
 mandates a white caret on orange grounds, but on the tertiary that is
 2.96:1 — under the 3:1 floor for non-text components. The guide states
@@ -389,11 +375,6 @@ microfluidic instrument, a cleanroom chip, a control station, a
 spacecraft on orbit, an engineer at an electronics bench, employees
 outside the Cambridge building, and an archive frame of an
 instrumentation lecture.</li>
-<li><strong>Watch the temperature.</strong> Draper’s published
-photography runs heavily cool-blue, which is the exact palette the
-concept argues its competitors all live in. The market tiles are
-deliberately balanced warm, cool, dark, near-black so the orange stays
-dominant.</li>
 <li><strong>Optimize on ingest.</strong> Source files ran 2–8.5 MB.
 Every image was resampled and re-encoded — the museum frame went from
 8.5 MB to 547 KB, a 93% reduction. An image pipeline is part of this
@@ -410,8 +391,6 @@ instrumentation work and the Draper Museum are among the strongest brand
 assets in American engineering, currently reduced to a paragraph and a
 set of opening hours.</li>
 </ul>
-<p>It should read as confident and open, and it will be the only site in
-the category that isn’t blue.</p>
 <h2 id="information-architecture">5. Information architecture</h2>
 <p><strong>Today (7 primary + 3 utility):</strong> About Us · What We Do
 · Market Areas · Media Center (7 children) · Careers · Education
