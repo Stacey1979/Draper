@@ -568,18 +568,10 @@ display type, links, UI component borders, and remaining focus states.
 Structurally: one <code>h1</code> per page, no skipped heading levels, a
 skip link, labelled landmarks, alt text on every image, a real label on
 the search field, a 16px type floor and 44px minimum touch targets.</p>
-<p><strong>What still needs manual testing</strong> before any
-conformance claim: reflow at 320px and 400% zoom, text-spacing
-overrides, screen reader output, and end-to-end keyboard operation. The
+<p><strong>What still needs manual testing</strong>: built to WCAG 2.2 AA, contrast and structure
+tested, manual screen reader and zoom passes such as reflow at 320px and 400% zoom, text-spacing
+overrides, screen reader output, and end-to-end keyboard operation still to come. The
 mobile menu also needs focus management and an Escape handler.</p>
-<p>So the accurate line is: built to WCAG 2.2 AA, contrast and structure
-tested, manual screen reader and zoom passes still to come.</p>
-<p>Accessibility belongs in the component library, so editors inherit it
-instead of being trained to preserve it — which is what produced a
-16-point accessibility gain and a QA score from 84.3 to 97.1 at
-UChicago. Monitoring wires into editorial workflow so regressions
-surface in days. A performance budget is enforced in CI, and a VPAT is
-published as a procurement asset.</p>
 <h2 id="platform-recommendation">9. Platform recommendation</h2>
 <p><strong>Drupal 11, hosted on Acquia Cloud.</strong></p>
 <table>
@@ -613,7 +605,7 @@ admin and front-end patterns.</td>
 </tr>
 <tr class="even">
 <td>Cost</td>
-<td>No license fees. Appropriate stewardship for a nonprofit.</td>
+<td>No license fees.</td>
 </tr>
 <tr class="odd">
 <td>Security posture</td>
@@ -670,8 +662,7 @@ indexation.</li>
 <li><strong>Quality:</strong> Core Web Vitals, accessibility score
 trend, broken link and content-quality scores.</li>
 <li><strong>Operations:</strong> time from content request to
-publication — the metric that tells you whether governance is
-working.</li>
+publication.</li>
 </ul>
 <h2 id="phasing">11. Phasing</h2>
 <p><strong>Phase 0 — Discovery (4–6 weeks).</strong> Content inventory
@@ -721,27 +712,9 @@ rules</td>
 <td><code>img/</code></td>
 <td>Optimized photography and the generated caret asset</td>
 </tr>
-<tr class="odd">
-<td><code>*-standalone.html</code></td>
-<td>Self-contained copies with CSS and images inlined, for presenting
-without a server</td>
-</tr>
 </tbody>
 </table>
-<p>Two things about the build are worth pointing at.</p>
-<p><strong>The stylesheet is shared, and consolidating it surfaced real
-bugs.</strong> The two pages were built with their own styles and
-drifted apart; merging them into one system exposed seven conflicts, a
-rule that had silently never applied, and a generic selector that was
-safe in isolation but collided once both pages used it. That is the
-argument for component-scoped naming and a single source of truth, made
-from evidence rather than principle.</p>
-<p><strong>Section rhythm is a token, not a duplicated value.</strong>
-Interior pages set <code>--section-y</code> via a body class rather than
-redefining the rule. One property, set per page type.</p>
 <h2 id="what-id-need-to-validate">13. What I’d need to validate</h2>
-<p>Stating these is part of the recommendation. An outside-in analysis
-has limits, and pretending otherwise would be the wrong signal.</p>
 <ol type="1">
 <li><strong>Publication review process.</strong> How much program
 content can actually be published? Some Draper work is classified,
